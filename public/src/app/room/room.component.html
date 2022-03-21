@@ -1,0 +1,71 @@
+
+  <head> 
+  <script type='text/javascript' src='http://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.4.0/fabric.min.js'></script>
+    <script type='text/javascript'>
+      window.onload=function(){
+          var canvas = new fabric.Canvas('sheet');
+          canvas.isDrawingMode = true;
+          canvas.freeDrawingBrush.width = 5; // width 1-10 option
+          canvas.freeDrawingBrush.color = "#ff0000"; // colors option 
+      }
+  </script>
+</head> 
+<div class="content" role="main">
+  <div class="card highlight-card card-small">
+    <h1>Room Component</h1>
+  </div>
+  <div>
+  <!-- Buttons  -->
+  <!-- Settings, Share link, Peace  -->
+    <span>
+      <a>Get Link<i style='font-size:24px' class='fas'>&#xf0c1;</i></a>
+    </span>
+  </div>
+  <!-- Canvas Buttons  -->
+  <div>
+    <h4> Canvas</h4>
+    <span>
+    <!-- <pw-canvas></pw-canvas> -->
+
+
+
+      <a><i style='font-size:24px;display:inline;' class='fas'>&#xf304;</i></a>
+      <a><i style='font-size:24px;display:inline;' class='fas'>&#xf1fc;</i></a>
+      <a><i style='font-size:24px' class='fas'>&#xf53f;</i></a>
+    </span>
+    <canvas id="sheet" width="400" height="400"></canvas>
+    <div class="toolBox" style="background-color: yellow;"></div>
+    <div class="toolBox" style="background-color: orange;"></div>
+    <div class="toolBox" style="background-color: red;"></div>
+    <div class="toolBox" style="background-color: violet;"></div>
+    <div class="toolBox" style="background-color: purple;"></div>
+    <div class="toolBox" style="background-color: blue;"></div>
+    <div class="toolBox" style="background-color: green;"></div>
+  </div>
+</div> 
+
+
+
+<!-- <html>
+    <script type='text/javascript' src='http://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.4.0/fabric.min.js'></script>
+
+    <script type='text/javascript'>
+        window.onload=function(){
+            var canvas = new fabric.Canvas('sheet');
+            canvas.isDrawingMode = true;
+            canvas.freeDrawingBrush.width = 5; // width 1-10 option
+            canvas.freeDrawingBrush.color = "#ff0000"; // colors option 
+        }
+    </script>
+  </head>
+  <body>
+    <canvas id="sheet" width="400" height="400"></canvas>
+    <div class="toolBox" style="background-color: yellow;"></div>
+    <div class="toolBox" style="background-color: orange;"></div>
+    <div class="toolBox" style="background-color: red;"></div>
+    <div class="toolBox" style="background-color: violet;"></div>
+    <div class="toolBox" style="background-color: purple;"></div>
+    <div class="toolBox" style="background-color: blue;"></div>
+    <div class="toolBox" style="background-color: green;"></div>
+  </body>
+</html> -->

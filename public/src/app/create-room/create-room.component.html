@@ -1,0 +1,31 @@
+<div class="content" role="main">
+    <div class="card highlight-card card-small">
+      <h1>Create Room</h1>
+    </div>
+    <form (submit)="serverCreateRoom()" >
+      <div class="card-container">
+        <div>
+          <div>
+            <p>Set a name and password for your friends to join. Or just get a sharable link</p>
+            <input class="form-control" type="text" name = "newRoom.name" placeholder = "Enter room name.."><br>
+            <input class="form-control" type="text" name = "newRoom.password" placeholder = "Enter room password..">
+          </div>
+          <div>
+          <p>Adjust Game settings (Default) </p>
+            <a><i class='fab fa-angellist' style='font-size:24px'></i></a>
+            <input type = "number" min = "1" max = "4" step = "1" name = "newRoom.players" placeholder = "2"><br>
+            <a><i class='far fa-clock' style='font-size:24px'></i></a>
+            <input type = "number" min = "1" max = "10" step = "1" name = "newRoom.rounds" placeholder = "5">
+          </div>
+        </div>
+        <a class="card" target="_blank" rel="noopener">
+          <span><h4><button type = "submit" style="background:transparent;border:none!important;" >Create</button><i class="fa fa-arrow-circle-right" style="font-size:24px"></i></h4></span>
+        </a>
+      </div>
+    </form>
+</div> 
+
+
+
+
+
