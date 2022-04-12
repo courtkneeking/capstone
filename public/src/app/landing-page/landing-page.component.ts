@@ -11,17 +11,19 @@ import { HttpServiceService } from './../http-service.service';
 export class LandingPageComponent implements OnInit {
 
   constructor(private _httpService: HttpServiceService, private _route: ActivatedRoute, private _router: Router) 
-  { }
-
-  ngOnInit(){
+  { 
+    // does not store object here; 
+    // basic routing functions are all needed in this component 
   }
-  createRoom(){
+
+  ngOnInit(){} // not needed 
+  createRoom(){ // just navigate to these components 
     this._router.navigate(['create']);
   }
   joinRoom(){
     this._router.navigate(['join']);
   }
-  showSettings(){alert('showSettings()');}
   giveInformation(){alert('giveInformation()')}
+
 
 }

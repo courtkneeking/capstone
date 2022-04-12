@@ -9,10 +9,9 @@ import { HttpServiceService } from './http-service.service';
 export class AppComponent implements OnInit{
   constructor(private _httpService: HttpServiceService, private _route: ActivatedRoute, private _router: Router) 
   {}
-  ngOnInit(){
-  }
+  ngOnInit(){}
   // tool bar buttons 
   returnHome(){this._router.navigate(['/']);}
   showSettings(){alert('showSettings()');}
-  login(){alert('login()');}
+  // login(){alert('login()');}
 }

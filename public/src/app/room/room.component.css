@@ -290,12 +290,24 @@
       visibility: hidden;
     }
   }
-  #sheet {
+#sheet {
     border:1px solid black;
     background-color: #fff6d0;
 }
 .toolBox { 
-    width: 50px;
+    width: 60px;
     height: 50px;
-    display: inline-flex;
+    display: block;
+    padding: 5px;
+}
+.half {
+  width: 45vw;
+  display: inline-flex;
+  vertical-align: top;
+}
+#colors{ 
+  width: 10vw;
+}
+#right { 
+  background-color: lavender;
 }

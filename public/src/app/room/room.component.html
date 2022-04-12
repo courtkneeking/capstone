@@ -12,37 +12,46 @@
 </head> 
 <div class="content" role="main">
   <div class="card highlight-card card-small">
-    <h1>Room Component</h1>
+    <h1>Welcome to {{room.name}} </h1>
   </div>
   <div>
-  <!-- Buttons  -->
-  <!-- Settings, Share link, Peace  -->
+</div> 
     <span>
-      <a>Get Link<i style='font-size:24px' class='fas'>&#xf0c1;</i></a>
-    </span>
-  </div>
-  <!-- Canvas Buttons  -->
-  <div>
-    <h4> Canvas</h4>
-    <span>
-    <!-- <pw-canvas></pw-canvas> -->
-
-
-
+      <a (click)="getLink()"><i style='font-size:24px' class='fas'>&#xf0c1;</i></a>
       <a><i style='font-size:24px;display:inline;' class='fas'>&#xf304;</i></a>
       <a><i style='font-size:24px;display:inline;' class='fas'>&#xf1fc;</i></a>
       <a><i style='font-size:24px' class='fas'>&#xf53f;</i></a>
     </span>
-    <canvas id="sheet" width="400" height="400"></canvas>
-    <div class="toolBox" style="background-color: yellow;"></div>
-    <div class="toolBox" style="background-color: orange;"></div>
-    <div class="toolBox" style="background-color: red;"></div>
-    <div class="toolBox" style="background-color: violet;"></div>
-    <div class="toolBox" style="background-color: purple;"></div>
-    <div class="toolBox" style="background-color: blue;"></div>
-    <div class="toolBox" style="background-color: green;"></div>
   </div>
-</div> 
+  <div class="half">
+    <canvas id="sheet" width="400px" height="400px"></canvas>
+    <div id = "colors">
+      <div class="toolBox" style="background-color: yellow;"></div>
+      <div class="toolBox" style="background-color: orange;"></div>
+      <div class="toolBox" style="background-color: red;"></div>
+      <div class="toolBox" style="background-color: violet;"></div>
+      <div class="toolBox" style="background-color: purple;"></div>
+      <div class="toolBox" style="background-color: blue;"></div>
+      <div class="toolBox" style="background-color: green;"></div>
+    </div>
+  </div>
+  <div class="half" id ="right">
+    <a><i class='far fa-clock' ></i></a>
+    <h2> Game players: {{room.game.requiredPlayers}}</h2>
+    <h2> Game rounds: {{room.game.rounds}}</h2>
+    <form (submit)="createPlayer()" >  
+      <input class ="inputs"  type = "text" name = "player.name"  [(ngModel)] = "player.name" placeholder = "name">
+      <input type = "hidden" name = "player.room"  [(ngModel)] = "player.room" value = "room._id">
+
+      <span><h4>
+        <button type = "submit" style="background:transparent;border:none!important;" >
+        Join Room? 
+        </button><i class="fa fa-arrow-circle-right" style="font-size:24px"></i>
+      </h4></span>
+    </form>
+    <!-- <h2> Players {{room.players}}</h2> -->
+  </div>
+
 
 
 

@@ -20,17 +20,22 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public', 'dist', 'public')));
 
 // Schemas: objects to be saved during the game
-
 // Rooms have a unique parameter/link, creator, users, 
 // (May also need to store the relative location of the drawings)
-var RoomSchema = new mongoose.Schema(
-    { id: Number, host: Object, players: Object}, 
-    { collection : 'rooms' }); 
+var RoomSchema = new mongoose.Schema({ 
+    name: '', password: '',
+    requiredPlayers : Number, 
+    currentPlayers : Number
+    
+    }, { collection : 'rooms' 
+}); 
+var Room = mongoose.model('Room', RoomSchema);  
 // Players have an original drawing and current drawing
 // Contained by Room (a user must start or join one)
 var PlayerSchema = new mongoose.Schema(
-    { id: Number, originalDrawing: Object, currentDrawing: Object}, 
-    { collection : 'players' });  
+    { name: '', room: ''}, { collection : 'players' });  
+    // originalDrawing: Object, currentDrawing: Object    
+ 
 // Drawings will be exported images, store as a string of bytes (?)
 // overwrite after each turn;  Contained by User; 
 var DrawingSchema = new mongoose.Schema(
@@ -52,7 +57,57 @@ var Drawing = mongoose.model('Drawing', DrawingSchema);
 // continueGame(roomParam), Screenshot, overwrite each drawing
 // finishGame(roomParam), share drawings
 // destroyEverything(roomParam), can be called when time has run out. 
+app.post('/api/create_room', (req, res)=>{
+    var newRoom = new Room(req.body);
+    newRoom.save((err, newRoom)=>{
+        if(err){
+            console.log('error creating room')
+            res.json(err)
+        }else{
+            console.log('server created rooom:  ', newRoom)
+            res.json(newRoom)
+        }
+    })
+})
+// find a room by url 
+app.get('/api/join_room/:url', (req, res)=>{
+    Room.findOne({name: req.params.url}, (err, joinRoom)=>{
+        if(err){
+            console.log('error joining room ')
+            res.json(err);
+        }else{
+            console.log('joined room', joinRoom)
+            res.json(joinRoom)
+        }
+    })
+})
+app.post('/api/create_player', (req, res)=>{
+    var newPlayer = new Player(req.body);
+    newPlayer.save((err, newPlayer)=>{
+        if(err){
+            console.log('error creating player')
+            res.json(err)
+        }else{
+            console.log('server created player:  ', newPlayer)
+            res.json(newPlayer);
+        }
+    })
+})
+    
 
+
+// this will call other create urls for testing
+app.get('api/test', (req, res) => {
+    var newTest = new Test();
+    newReview.save((err, newTest)=>{
+        if(err){
+            res.json(err)
+        }else{
+            res.json(newTest);
+            console.log('test', newTest)
+        }
+    })
+});
 
 // a catch all case 
 app.all("*", (req,res,next) => {

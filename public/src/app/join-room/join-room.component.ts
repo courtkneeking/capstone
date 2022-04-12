@@ -8,12 +8,19 @@ import { HttpServiceService } from './../http-service.service';
   styleUrls: ['./join-room.component.css']
 })
 export class JoinRoomComponent implements OnInit {
-
-  constructor(private _httpService: HttpServiceService, private _route: ActivatedRoute, private _router: Router) { }
-
-  ngOnInit(): void {
+  existingRoom : any;
+  constructor(private _httpService: HttpServiceService, private _route: ActivatedRoute, private _router: Router) { 
+    this.existingRoom = { name: '', password: ''}
   }
-  serverJoinRoom(){
+
+  ngOnInit(): void {} 
+
+  // upon button click() 
+  // check that room exists return success/failure 
+  // if success route to room component
+  // else display err 
+  joinRoom(){
+    this._httpService.joinRoom(this.existingRoom.name);
     this._router.navigate(['room']);
   }
 

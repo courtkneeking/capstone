@@ -11,7 +11,7 @@ const routes: Routes = [
   {path: '', component: LandingPageComponent},
   {path: 'join', component: JoinRoomComponent},
   {path: 'create', component: CreateRoomComponent},
-  {path: 'room', component: RoomComponent},
+  {path: 'room/:url', component: RoomComponent},
   {path: 'end', component: FinishedGameComponent}
 ];
 
