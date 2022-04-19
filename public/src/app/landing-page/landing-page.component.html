@@ -3,14 +3,20 @@
     <div class="card highlight-card card-small">
       <h1>Draw-Pass-Draw</h1>
     </div>
-    <!-- Buttons  -->
     <div class="card-container">
-        <a class="card" target="_blank" rel="noopener">
-        <span><h4><button style="background:transparent;border:none!important;" (click) = "joinRoom()">Join Existing Room</button><i class="fa fa-arrow-circle-right" style="font-size:24px"></i></h4></span>
+        <a class ="card" [routerLink]= "['/room', {state:'join'}]">
+          <span><h4>
+            <button style="background:transparent;border:none!important;">
+              Join Existing Room
+            </button>
+            <i class="fa fa-arrow-circle-right" style="font-size:24px"></i>
+          </h4></span>
         </a>
-        <a class="card" target="_blank" rel="noopener">
-        <span><h4 ><button style="background:transparent;border:none!important;" (click) = "createRoom()">Create room</button><i style='font-size:24px' class='far'>&#xf580;</i></h4></span>
+        <a class="card" [routerLink]= "['/room', {state:'create'}]">
+        <span><h4 >
+          <button style="background:transparent;border:none!important;">
+          Create room
+        </button><i style='font-size:24px' class='far'>&#xf580;</i></h4></span>
         </a>
-    </div>
-    <a><i (click) = "giveInformation()" style='font-size:24px' class='far'>&#xf059;</i></a>
+    </div>  
 </div> 

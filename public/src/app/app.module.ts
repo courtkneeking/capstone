@@ -12,9 +12,6 @@ import { AppComponent } from './app.component';
 import { RoomComponent } from './room/room.component';
 
 import { LandingPageComponent } from './landing-page/landing-page.component';
-import { CreateRoomComponent } from './create-room/create-room.component';
-import { JoinRoomComponent } from './join-room/join-room.component';
-import { FinishedGameComponent } from './finished-game/finished-game.component';
 import { TestComponent } from './test/test.component';
 import { GameComponent } from './game/game.component';
 
@@ -23,9 +20,6 @@ import { GameComponent } from './game/game.component';
     AppComponent,
     RoomComponent,
     LandingPageComponent,
-    CreateRoomComponent,
-    JoinRoomComponent,
-    FinishedGameComponent,
     TestComponent,
     GameComponent,
   ],

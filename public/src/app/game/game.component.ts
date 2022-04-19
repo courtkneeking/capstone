@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { HttpServiceService } from './../http-service.service';
 
 @Component({
   selector: 'app-game',
@@ -7,10 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GameComponent implements OnInit {
 
-  constructor() { }
+  Game : any;
+  constructor(private _httpService: HttpServiceService, private _route: ActivatedRoute, private _router: Router) { 
+    this.Game = 5;
+  }
 
   ngOnInit(): void {
+
   }
+  
 
     // create a drawing for each user at the start of each game 
   // user also has a user.currentDrawing, which = newDrawing initially 
