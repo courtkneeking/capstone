@@ -1,0 +1,11 @@
+Start MongoDB: brew services start mongodb-community
+Start Server: node server.js
+Build: cd public; ng build --watch
+
+
+https://stackoverflow.com/questions/44864303/send-data-through-routing-paths-in-angular
+https://angular.io/guide/inputs-outputs
+
+
+https://dimitr.im/mean-mvc
+https://github.com/shrestaz/snak/tree/master/snak-server/src/routes/authentication

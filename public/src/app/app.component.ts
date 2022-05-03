@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpServiceService } from './http-service.service';
+import { NgCanvasPainterComponent } from 'ng-canvas-painter';
 
 @Component({
   selector: 'app-root',

@@ -32,6 +32,7 @@
               "src/styles.css"
             ],
             "scripts": [
+              "/Users/courtneyking/Desktop/capstone/project/public/dist/angular-canvas-painter.min.js"
             ]
           },
           "configurations": {

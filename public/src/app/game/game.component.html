@@ -1,16 +1,4 @@
 <p>game works! {{Game}} </p>
-<head> 
-    <script type='text/javascript' src='http://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.4.0/fabric.min.js'></script>
-      <script type='text/javascript'>
-        window.onload=function(){
-            var canvas = new fabric.Canvas('sheet');
-            canvas.isDrawingMode = true;
-            canvas.freeDrawingBrush.width = 5; // width 1-10 option
-            canvas.freeDrawingBrush.color = "#ff0000"; // colors option 
-        }
-    </script>
-  </head> 
-<body>
   <div> 
     <span>
       <a><i style='font-size:24px;display:inline;' class='fas'>&#xf304;</i></a>
@@ -18,16 +6,18 @@
       <a><i style='font-size:24px' class='fas'>&#xf53f;</i></a>
     </span>
   </div>
-  <div class="half">
-    <canvas id="sheet" width="400px" height="400px"></canvas>
-    <div id = "colors">
-      <div class="toolBox" style="background-color: yellow;"></div>
-      <div class="toolBox" style="background-color: orange;"></div>
-      <div class="toolBox" style="background-color: red;"></div>
-      <div class="toolBox" style="background-color: violet;"></div>
-      <div class="toolBox" style="background-color: purple;"></div>
-      <div class="toolBox" style="background-color: blue;"></div>
-      <div class="toolBox" style="background-color: green;"></div>
-    </div>
+  <div id  ="sheet" >
+    <ng-canvas-painter [color]=col></ng-canvas-painter>
   </div>
-</body>
+  <div class = "colors">
+    <div class="toolBox" >
+    <div (click)="changeColor()" style="background-color: yellow;"> </div>
+    <div style="background-color: orange;"></div>
+    <div style="background-color: red;"></div>
+    <div style="background-color: violet;"></div>
+    <div style="background-color: purple;"></div>
+    <div style="background-color: blue;"></div>
+    <div style="background-color: green;"></div>
+  </div>
+  </div>
+

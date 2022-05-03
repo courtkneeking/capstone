@@ -19,13 +19,6 @@
     </div>
 
     <div *ngIf="state.join==true" id = form>
-      <form (submit) = "joinRoom(existingRoom.id)">
-          <input class="inputs" type="text" name = "existingRoom.name" placeholder = "Enter room name..">
-            <button type="submit" style="background:transparent;border:none!important;" >
-            <i class="fa fa-arrow-circle-right" style="font-size:24px"></i>
-          </button>
-          
-      </form>
       <table>
         <tr>
           <th>Name</th>
@@ -35,16 +28,28 @@
         <tr *ngFor = "let r of rooms">
           <td>{{r.name}}</td>
           <td><button (click) = "joinRoom(r._id)" class="fa fa-arrow-circle-right" style="font-size:24px"></button></td>
-          <td><button  (click) = "deleteRoom(r._id)" class="fa" style="font-size:24px">&#xf0c4;</button></td>
+          <td><button  (click) = "deleteRoom(r._id)" class="fa" style="font-size:24px">&#xf0c4;></button></td>
+          <td><button  [routerLink]= "['/game', {room:r._id}]" class="fa" style="font-size:24px">game</button></td>
         </tr>
       </table>
     </div>
 
-
-    <div *ngIf="state.room==true" class="half" id ="right">
-      <a><i class='far fa-clock' ></i></a>
+    <div *ngIf="state.room==true">
+      <div class="half" id ="right">
+        <a><i class='far fa-clock' ></i></a>
         <a (click)="getLink()"><i style='font-size:24px' class='fas'>&#xf0c1;</i></a>
+        <button  [routerLink]= "['/game', {room:room._id}]" class="fa" style="font-size:24px">game</button>
+      </div>
+      <form (submit)="createPlayer()" >
+        <input class="inputs" type="text" name = "newPlayer.name" [(ngModel)] = "newPlayer.name" placeholder = "Enter name"><br>
+          <button type = "submit" >
+            Create
+          </button>    
+      </form>
+      <h6> Room's Players:  </h6>
+      <div *ngFor="let p of room.players">{{ p.name }} </div> 
     </div>
+
 
   </div>
 

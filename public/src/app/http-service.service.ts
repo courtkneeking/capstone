@@ -22,4 +22,11 @@ export class HttpServiceService {
   deleteRoom(id : any){
     return this._http.delete('/api/delete_room/'+id);
   }
+  createPlayer(newPlayer : any){
+    return this._http.post('/api/create_player/', newPlayer);
+  };
+  updateRoom(room : any){ 
+    console.log('http updateRomo ', room)
+    return this._http.put('api/update_room/'+room._id, room);
+  }
 }

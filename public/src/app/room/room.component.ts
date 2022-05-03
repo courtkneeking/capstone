@@ -10,6 +10,7 @@ import { HttpServiceService } from './../http-service.service';
 
 export class RoomComponent implements OnInit {
   rooms: any;
+  newPlayer: any;
   newRoom : any;
   existingRoom : any;
   room : any;
@@ -19,8 +20,8 @@ export class RoomComponent implements OnInit {
   constructor(private _httpService: HttpServiceService, private _route: ActivatedRoute, private _router: Router) { 
     this.rooms=[];
     this.newRoom = { name: '',requiredPlayers: Number};
-    this.room = { name: '', requiredPlayers: Number};
-    this.existingRoom = { name: '',requiredPlayers: Number, id:String};
+    this.newPlayer = { name: ''};
+    this.room = { name: '', requiredPlayers: Number, players : []};
     this.errors = [];
   }
   ngOnInit(){
@@ -34,14 +35,14 @@ export class RoomComponent implements OnInit {
     let obs =this._httpService.getRooms();
     obs.subscribe(data=>{
       this.rooms= data;
-      console.log('data: ', data)
+      console.log('frontend GetRooms(): ', this.rooms);
     });
-    console.log('rooms: ', this.rooms);
   }
   createRoom(){
     let obs = this._httpService.createRoom(this.newRoom);
     obs.subscribe(data=>{
       this.room=data;
+      console.log('frontend createRoom(): ', this.room);
       this.changeState(3);
     });
   }
@@ -50,6 +51,7 @@ export class RoomComponent implements OnInit {
     let obs = this._httpService.joinRoom(id);
     obs.subscribe(data=>{
       this.room = data;
+      console.log('frontend joinRoom(): ', this.room);
       this.changeState(3);
     });
   }
@@ -57,7 +59,26 @@ export class RoomComponent implements OnInit {
     let obs = this._httpService.deleteRoom(id);
     obs.subscribe(data =>{
       this.rooms = this.getRooms();
+      console.log('frontend deleteRoom(): ', this.rooms);
     });
+  }
+  createPlayer(){
+    let obs = this._httpService.createPlayer(this.newPlayer);
+    obs.subscribe(data =>{
+      this.newPlayer= data;
+      console.log('frontend createPlayer(): ', this.newPlayer);
+      this.room.players.push(this.newPlayer);
+      this.updateRoom();
+    });
+  }
+  updateRoom(){
+    let obs = this._httpService.updateRoom(this.room);
+    obs.subscribe(data =>{
+      this.room= data;
+      console.log('frontend updateRoom(): ', this.room);
+
+    });
+    
   }
 
 
@@ -66,9 +87,6 @@ export class RoomComponent implements OnInit {
   checkNumberUsers(){ 
     // if room.requiredUsers == game.currentUsers
     // startGame(); 
-  };
-  // the game begins 
-  startGame(){
   };
   changeState(n: Number){
     this.state.create=false;

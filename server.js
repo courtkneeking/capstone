@@ -41,12 +41,17 @@ app.post('/api/create_room', (req, res)=>{
             console.log('error creating room: ', err)
             res.json(err)
         }else{
-            console.log('server created rooom:  ', result)
+            console.log('backend CreatedRoom() returned:  ', result)
             res.json(result)
         }
     })
 })
 
+
+// async , await ... 
+// console.warn ... 
+
+// get a single room 
 app.get('/api/join_room/:id', (req, res)=>{
     console.log('joining room  ... ');
     Room.findOne({_id:req.params.id}, (err, room)=>{
@@ -54,32 +59,58 @@ app.get('/api/join_room/:id', (req, res)=>{
             console.log('error joining room ')
             res.json(err);
         }else{
-            console.log('joined room', room)
+            console.log('backend JoinedRoom() returned: ' , room)
             res.json(room)
         }
     })
 });
 
+/// get all the rooms for join rooms 
 app.get('/api/get_rooms', (req, res) => {
     Room.find({}, (err, result)=>{
         if(err){
             res.json(err);
         }else{
+            console.log('backend GetRooms() returned: ', result);
             res.json(result)
         }
     })
 });
+// 
 
+// delete a room 
 app.delete('/api/delete_room/:id', (req, res)=>{
     console.log('deleting ... ');
     Room.remove({_id:req.params.id}, (err)=>{
         if(err){
             console.log(err)
         }else{
+            console.log('backend Deleted Room()');
             res.json({success: 'You successfully deleted this task.'})
         }
     })
 })
+// app.put('/api/update_room/:id', (req, res)=>{
+//     Room.findByIdAndUpdate(req.params.id, (err, confirmation)=>{
+//         if(err){
+//             console.log(err);
+//         }else{
+//             console.log('server update : ', confirmation)
+//             res.json(confirmation)
+//         }
+//     })
+// });
+
+app.put('/update_room/:id', (req, res)=>{
+    console.log('update server ', req.body.players)
+    Room.findByIdAndUpdate(req.params.id, req.body, (err, confirmation)=>{
+        if(err){
+            console.log(err);
+        }else{
+            res.json({success: 'You succesfully updated this task.'})
+        }
+    })
+});
 
 app.post('/api/create_player', (req, res)=>{
     var newPlayer = new Player(req.body);
@@ -88,14 +119,12 @@ app.post('/api/create_player', (req, res)=>{
             console.log('error creating player')
             res.json(err)
         }else{
-            console.log('server created player:  ', result)
+            console.log('backend CreatePlayer() returned :', result);
             res.json(result);
         }
     })
 })
     
-
-
 // this will call other create urls for testing
 app.get('api/test', (req, res) => {
     var newTest = new Test();
